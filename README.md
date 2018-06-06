@@ -1,37 +1,35 @@
 # brcode
+条形码的组件网上有很多，除了``zxing``之外，别的都是N年不维护了。而``zxing``只生成纯条码。
 
-#### 项目介绍
-test
-
-#### 软件架构
-软件架构说明
+## 项目介绍
+基于``zxing``，实现条形码带数字输出。参照标准输出格式，在``zxing``生成的纯条码图片的基础上做了调整，加入文本内容。
 
 
-#### 安装教程
+编码格式 | 说明 | 效果展示
+---- | ---- | ----
+EAN-13 | 十二位数字 + 一位校验码 | ![](./docs/EAN-13.jpg)
+EAN-8 | 七位数字 + 一位校验码 | ![](./docs/EAN-8.jpg)
+CODE-39 | 字符和数字，不定长 | ![](./docs/CODE-39.jpg)
+CODE-128 | ASCII0-127，不定长 |![](./docs/CODE-128.jpg)
+UPC-A | 十一位数字 + 一位校验码 | ![](./docs/UPC-A.jpg)
+UPC-E | 七位数字 + 一位校验码 | ![](./docs/UPC-E.jpg)
+QR Code | 二维码 | ![](./docs/qrcode.jpg)
 
-1. xxxx
-2. xxxx
-3. xxxx
+## 使用说明
+主要是对上面六种条码的格式进行了调整，其他的条码格式直接在底部居中显示文本。
 
-#### 使用说明
+以EAN-13为例
+````java
+BrQrCodeUtil.brEncode(条码内容, BarcodeFormat.EAN_13, 文件对象);
 
-1. xxxx
-2. xxxx
-3. xxxx
-
-#### 参与贡献
-
-1. Fork 本项目
-2. 新建 Feat_xxx 分支
-3. 提交代码
-4. 新建 Pull Request
-
-
-#### 码云特技
-
-1. 使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2. 码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3. 你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4. [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5. 码云官方提供的使用手册 [http://git.mydoc.io/](http://git.mydoc.io/)
-6. 码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+// 如果条码内容是12位数字，则自动计算出第十三位。
+// 如果是13位数字，会进行校验，失败抛出异常。
+````
+主要支持
+``com.google.zxing.BarcodeFormat``
+- EAN_8
+- EAN_13
+- UPC_A
+- UPC_E
+- CODE_39
+- CODE_128

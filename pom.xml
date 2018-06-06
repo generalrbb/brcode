@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns = "http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>io.github.bluesbruce</groupId>
+  <artifactId>brcode</artifactId>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
+  <name>brcode</name>
+  <description>基于zxing的条形码工具</description>
+  <url>${project.home}</url>
+
+  <developers>
+    <developer>
+      <email>goodluck_lq@126.com</email>
+      <name>BBF</name>
+      <roles>
+        <role>architect</role>
+        <role>developer</role>
+      </roles>
+      <timezone>+8</timezone>
+      <url>https://bluesbruce.github.io/</url>
+    </developer>
+  </developers>
+
+  <issueManagement>
+    <system>issue</system>
+    <url>${project.home}/issues</url>
+  </issueManagement>
+
+  <licenses>
+    <license>
+      <name>The Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+
+  <scm>
+    <connection>scm:git@gitee.com:bbfbbf/brcode.git</connection>
+    <developerConnection>scm:git@gitee.com:bbfbbf/brcode.git</developerConnection>
+    <url>${project.home}</url>
+    <tag>${project.version}</tag>
+  </scm>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <project.home>https://gitee.com/bbfbbf/brcode</project.home>
+
+    <!-- provided dependencies -->
+    <zxing.version>3.3.3</zxing.version>
+
+    <!-- test dependencies -->
+    <junit.version>4.12</junit.version>
+  </properties>
+  <dependencies>
+    <!-- 二维码、条形码 -->
+    <dependency>
+      <groupId>com.google.zxing</groupId>
+      <artifactId>core</artifactId>
+      <version>${zxing.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <!-- junit -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>
