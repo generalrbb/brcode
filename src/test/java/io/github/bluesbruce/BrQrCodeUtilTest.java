@@ -73,4 +73,15 @@ public class BrQrCodeUtilTest {
     String qrStr = BrQrCodeUtil.decode(new File("d:/temp/EAN-8.jpg"));
     System.out.println("条形码解码:" + qrStr);
   }
+
+  @Test
+  @Ignore
+  public void pdf417Decode() throws IOException, NotFoundException, WriterException {
+    File file = new File("d:/temp/pdf417.jpg");
+    String str = "hello，中国";
+    BrQrCodeUtil.pdf417Encode(str, file, 300, 150);
+    // 解码
+    String deStr = BrQrCodeUtil.decode(file);
+    System.out.println("PDF417解码:" + deStr);
+  }
 }

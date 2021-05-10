@@ -67,7 +67,7 @@ public class BrQrCodeUtil {
     // 提供给编码器的附加参数
     final Map<EncodeHintType, Object> hints = new HashMap<>(2);
     hints.put(EncodeHintType.CHARACTER_SET, UTF8);
-    if (format == BarcodeFormat.QR_CODE) {
+    if (format == BarcodeFormat.QR_CODE || format == BarcodeFormat.PDF_417) {
       hints.put(EncodeHintType.MARGIN, 1);
     } else {
       // 左右边距。实际宽度是width + margin
@@ -120,6 +120,7 @@ public class BrQrCodeUtil {
    * @param width 宽度
    * @param height 高度
    * @return 二维码图片（黑白）
+   * @throws WriterException 生成二维码异常
    */
   public static BufferedImage qrEncode(String content, int width, int height) throws WriterException {
     final BitMatrix bitMatrix = encode(content, BarcodeFormat.QR_CODE, width, height);
@@ -244,6 +245,61 @@ public class BrQrCodeUtil {
     return image;
   }
 
+  /**
+   * 生成PDF417二维条码到文件，二维码图片格式取决于文件的扩展名
+   * <p>参考《GB/T 17172-1997 四一七条码》</p>
+   *
+   * @param content    文本内容
+   * @param targetFile 目标文件，扩展名决定输出格式
+   * @param width      宽度
+   * @param height     高度
+   * @return 目标文件
+   * @throws IOException     IO异常
+   * @throws WriterException 编码失败异常
+   * @see <a href="https://baike.baidu.com/item/PDF417%E6%9D%A1%E7%A0%81">PDF417条码</a>
+   */
+  public static File pdf417Encode(String content, File targetFile,
+      int width, int height) throws IOException, WriterException {
+    final BufferedImage image = pdf417Encode(content, width, height);
+    ImageUtil.write(image, targetFile);
+    return targetFile;
+  }
+
+  /**
+   * 生成PDF417二维条码到输出流
+   * <p>参考《GB/T 17172-1997 四一七条码》</p>
+   *
+   * @param content   文本内容
+   * @param imageType 图片类型（图片扩展名），见{@link ImageUtil}
+   * @param out       目标流
+   * @param width     宽度
+   * @param height    高度
+   * @throws IOException     IO异常
+   * @throws WriterException 编码失败异常
+   * @see <a href="https://baike.baidu.com/item/PDF417%E6%9D%A1%E7%A0%81">PDF417条码</a>
+   */
+  public static void pdf417Encode(String content, String imageType, OutputStream out,
+      int width, int height) throws IOException, WriterException {
+    final BufferedImage image = pdf417Encode(content, width, height);
+    ImageUtil.write(image, imageType, out);
+  }
+
+  /**
+   * 生成PDF417二维条码图片
+   * <p>参考《GB/T 17172-1997 四一七条码》</p>
+   *
+   * @param content 文本内容
+   * @param width   宽度
+   * @param height  高度
+   * @return 二维码图片（黑白）
+   * @throws WriterException 编码异常
+   * @see <a href="https://baike.baidu.com/item/PDF417%E6%9D%A1%E7%A0%81">PDF417条码</a>
+   */
+  public static BufferedImage pdf417Encode(String content, int width, int height)
+      throws WriterException {
+    final BitMatrix bitMatrix = encode(content, BarcodeFormat.PDF_417, width, height);
+    return toImage(bitMatrix);
+  }
 
   /**
    * EAN（国际标准条码）计算校验码

@@ -1,10 +1,9 @@
 package io.github.bluesbruce.painter;
 
 import com.google.zxing.BarcodeFormat;
-import com.google.zxing.FormatException;
 import io.github.bluesbruce.TextPainter;
-
-import java.awt.*;
+import java.awt.Font;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 /**
@@ -47,7 +46,7 @@ public class TextPainterFactory {
   /**
    * 获取条码文本绘制实例
    * @param format {@link BarcodeFormat}
-   * @return {@link Painter}
+   * @return {@link TextPainter}
    */
   public static TextPainter getPainter(BarcodeFormat format) {
     switch (format) {
@@ -60,7 +59,6 @@ public class TextPainterFactory {
       case UPC_E:
         return UpceTextPainter.getInstance();
       case CODE_39:
-        return CodeTextPainter.getInstance();
       case CODE_128:
         return CodeTextPainter.getInstance();
       default:

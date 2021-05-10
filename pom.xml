@@ -6,7 +6,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.github.bluesbruce</groupId>
   <artifactId>brcode</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.0</version>
   <packaging>jar</packaging>
   <name>brcode</name>
   <description>基于zxing的条形码工具</description>
@@ -50,7 +50,7 @@
     <project.home>https://gitee.com/bbfbbf/brcode</project.home>
 
     <!-- provided dependencies -->
-    <zxing.version>3.3.3</zxing.version>
+    <zxing.version>3.4.1</zxing.version>
 
     <!-- test dependencies -->
     <junit.version>4.12</junit.version>
