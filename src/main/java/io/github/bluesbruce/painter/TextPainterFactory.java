@@ -1,7 +1,7 @@
 package io.github.bluesbruce.painter;
 
 import com.google.zxing.BarcodeFormat;
-import io.github.bluesbruce.TextPainter;
+import io.github.bluesbruce.util.TextPainter;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;

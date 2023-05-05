@@ -1,4 +1,4 @@
-package io.github.bluesbruce;
+package io.github.bluesbruce.util;
 
 import java.awt.image.BufferedImage;
 

@@ -1,7 +1,7 @@
 package io.github.bluesbruce.painter;
 
-import io.github.bluesbruce.BrQrCodeUtil;
-import io.github.bluesbruce.TextPainter;
+import io.github.bluesbruce.util.BrQrCodeUtil;
+import io.github.bluesbruce.util.TextPainter;
 import io.github.bluesbruce.util.ImageUtil;
 
 import java.awt.*;

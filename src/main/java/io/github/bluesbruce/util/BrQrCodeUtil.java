@@ -1,4 +1,4 @@
-package io.github.bluesbruce;
+package io.github.bluesbruce.util;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.BinaryBitmap;
@@ -15,6 +15,7 @@ import com.google.zxing.common.HybridBinarizer;
 import io.github.bluesbruce.painter.TextPainterFactory;
 import io.github.bluesbruce.util.BufferedImageLuminanceSource;
 import io.github.bluesbruce.util.ImageUtil;
+import org.springframework.stereotype.Component;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -29,6 +30,7 @@ import java.util.Map;
  * 基于com.google.zxing的二维码工具类
  * @author BBF
  */
+@Component
 public class BrQrCodeUtil {
 
   public static final int BLACK = 0xFF000000;
@@ -224,7 +226,7 @@ public class BrQrCodeUtil {
   public static Image brEncode(String content, BarcodeFormat format) throws WriterException {
     final BitMatrix bitMatrix = encode(content, format, BR_CODE_WIDTH, BR_CODE_HEIGHT);
     BufferedImage image = toImage(bitMatrix);
-    TextPainterFactory.getPainter(format).paintText(image, content);
+    //TextPainterFactory.getPainter(format).paintText(image, content);
     return image;
   }
 

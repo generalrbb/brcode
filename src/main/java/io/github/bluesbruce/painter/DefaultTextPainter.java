@@ -1,6 +1,6 @@
 package io.github.bluesbruce.painter;
 
-import io.github.bluesbruce.TextPainter;
+import io.github.bluesbruce.util.TextPainter;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

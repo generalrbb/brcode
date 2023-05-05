@@ -1,7 +1,6 @@
 package io.github.bluesbruce.util;
 
 import com.google.zxing.LuminanceSource;
-import io.github.bluesbruce.BrQrCodeUtil;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;
